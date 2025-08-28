@@ -2,14 +2,18 @@
 window.addEventListener('load', function() {
     const loadingScreen = document.getElementById('loading-screen');
     
-    setTimeout(() => {
-        loadingScreen.classList.add('hidden');
-        
-        // Remove loading screen from DOM after transition
+    if (loadingScreen) {
         setTimeout(() => {
-            loadingScreen.remove();
-        }, 800);
-    }, 2000); // Show for 2 seconds
+            loadingScreen.classList.add('hidden');
+            
+            // Remove loading screen from DOM after transition
+            setTimeout(() => {
+                if (loadingScreen.parentNode) {
+                    loadingScreen.remove();
+                }
+            }, 800);
+        }, 2000); // Show for 2 seconds
+    }
 });
 
 // Navigation
